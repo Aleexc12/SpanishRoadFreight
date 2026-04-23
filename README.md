@@ -40,9 +40,11 @@ Data collection was manual:
 All raw files bundled here for reproducibility:
 https://drive.google.com/drive/folders/10vG5fpQ-F3-FjTRtPxPqd1OWoxPWJd8D?usp=drive_link
 
-The raw files, cleaned CSVs, and Hive tables under database `flota` are **already on HDFS, world-readable**, under `/user/bc4278_nyu_edu/{6_HW,7_HW,final}/`. Read access for `pd2672_nyu_edu` and `adm209_nyu_edu` was requested via HPC@nyu.edu during HW6 and remains in place.
+The raw files, cleaned CSVs, and Hive tables under database `flota` are on HDFS under `/user/bc4278_nyu_edu/{6_HW,7_HW,final}/`, world-readable for graders on the NYU Dataproc cluster.
 
-**Recommended path:** skip the ingest and ETL steps and read the Hive tables directly (see `Inspect results` below). The analytic outputs `flota.corridors_ranking` and `flota.mpi` are already populated. Re-running the full pipeline requires re-uploading the raw data into your own HDFS home, since `Ingest.scala` uses relative paths that resolve to the runner's home directory.
+> **Note on reproducing this outside NYU Dataproc.** This was built as coursework for the NYU Dataproc environment (HDFS, YARN, Hive). The commands below assume that setup. Running it on a different platform (local Spark, another cluster, Dataproc on GCP, etc.) will require adjusting a few things: the HDFS paths (`6_HW/...`, `7_HW/...`, `final/...` resolve to the runner's HDFS home), the `--master yarn` flags, and the Hive warehouse location (`hdfs:///user/bc4278_nyu_edu/flota.db` in `Clean.scala`). The analytical logic in the Scala files is portable; only the I/O layer and cluster flags are environment-specific.
+
+**Recommended path (if you're on NYU Dataproc):** skip the ingest and ETL steps and read the Hive tables directly (see `Inspect results` below). The analytic outputs `flota.corridors_ranking` and `flota.mpi` are already populated. Re-running the full pipeline requires re-uploading the raw data into your own HDFS home, since `Ingest.scala` uses relative paths that resolve to the runner's home directory.
 
 Only if reproducing end-to-end:
 
