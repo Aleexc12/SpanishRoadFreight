@@ -8,6 +8,8 @@
 
 The project takes six years of Spanish MITMA freight data and produces two things: a ranking of the 210 interregional corridors by structural inefficiency, and a quarterly margin-pressure index that tracks whether carrier costs are outpacing shipper prices, broken down by distance band.
 
+![](.github/assets/reroute.gif)
+
 ## Directory layout
 
 ```
